@@ -3,22 +3,102 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Reveal.js Presentation</title>
+    <title>
+      Title: Best Practices for Test Environments: A Personal Journey
+    </title>
 
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css" />
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/white.css" />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/reveal.js/dist/reveal.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/reveal.js/dist/theme/white.css"
+    />
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>Slide 1</section>
-        <section>Slide 2</section>
+        <section data-markdown section data-transition="fade">
+          <textarea data-template>
+            # Best Practices for Test Environments
+            ---
+            ## Slide 1: Introduction
+            
+            - test environments mitigate risk
+            - but test environments _can_ enforce/require slow & inefficient processes 
+            - Let's throw out everything - start from scratch
+            ---
+            ## Slide 2: My Early Struggles - standards and why
+            
+            - we should have a test environment that looks like prod
+            - let's call it staging - it will gate everything
+            - staging catches some things, not all - but useful (data concerns, regulatory concerns, 3rd party concerns, costs, infra)
+            - product grows - teams grow --- collisions
+            - coordinations - my stuff needs to go there now, can you wait? i created data that i need!
+            - code can be mitigated a bit by cleaner branching strategies, but data, expectations, varying release schedules can be problematic
+            ---
+            ## - How about another environment? QA!
+
+            - let's use staging as a (pre)prod-copy only. this is a sensitive place
+            - avoids collisions in the sensitive space
+            - let's create a QA environment
+            - perhaps more liberal with data
+            - more liberal with code branches
+            - teams are still growing - more collisions, more data hiccups, more general confusion (feature flags), more investment and capacity required from platform & infra teams
+            ---
+            ## - How about another environment? Dev!
+
+            - let's use QA as a (pre)(pre)prod-copy only. let's make QA  more official - this is a sensitive place
+            - avoids collisions in the sensitive space
+            - let's create a place where the QA rules don't apply - lets call it DEV
+            - perhaps more liberal with data, code, integrations, trust, etc
+            - teams are still growing - more collisions, more data hiccups, more general confusion (feature flags)
+            ---
+            ## - How about another environment? Dev2(?)
+
+            - rinse repeat
+            ---
+            ## Slide 6: Best Practices - Configuration Management
+            
+            - Use version control systems to manage code and configurations
+            - Ensure consistency across all environments
+            - Automate deployment processes
+            ---
+            ## Slide 7: Best Practices - Continuous Integration & Continuous Deployment (CI/CD)
+            
+            - Emphasize the importance of CI/CD in a test environment
+            - Discuss the benefits of implementing CI/CD
+            - Share tools and technologies that can facilitate CI/CD
+            ---
+            ## Slide 8: Best Practices - Monitoring & Reporting
+            
+            - Monitor test environments for issues and performance
+            - Implement logging and reporting systems to track progress and identify issues
+            - Set up automated alerts for critical incidents
+            ---
+            ## Slide 9: Case Study - My Personal Success Story
+            
+            - Share a personal story of how implementing best practices transformed your test environment
+            - Discuss the improvements you saw in terms of efficiency, reduced bugs, and faster deployment
+            ---
+            ## Slide 10: Key Takeaways & Conclusion
+            
+            - Summarize the best practices discussed in the presentation
+            - Encourage the audience to reflect on their own test environment processes
+            - Invite questions and discussion
+            ---
+          </textarea>
+        </section>
       </div>
     </div>
 
-    <script src="node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="../../node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="../../node_modules/reveal.js/plugin/markdown/markdown.js"></script>
     <script>
-      Reveal.initialize();
+      Reveal.initialize({
+        plugins: [RevealMarkdown],
+      });
     </script>
   </body>
 </html>
