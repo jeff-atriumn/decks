@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Title: Best Practices for Test Environments: A Personal Journey
+    </title>
+
+    <link
+      rel="stylesheet"
+      href="../../node_modules/reveal.js/dist/reveal.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/reveal.js/dist/theme/white.css"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown section data-transition="fade">
+          <textarea data-template>
+            # Best Practices for User Stories
+            ---
+            ## Slide 1: Introduction
+
+            - test environments mitigate risk
+            - but test environments _can_ enforce/require slow & inefficient processes
+            - Let's throw out everything - start from scratch
+            ---
+            ## Slide 2: My Early Struggles - standards and why
+
+            - we should have a test environment that looks like prod
+            ---
+            ## - Veritical Slices
+            ---
+            ## - Acceptance Criteria is Everything (Literally)
+            - grocery store checklist
+              - don't need directions, speed limit
+              - just need value
+            - committable
+            - testable
+            ---
+            ## - Acceptance Criteria is Test Cases
+            - test cases => validation
+            ---
+            ## - Acceptance Criteria is a Contract
+            - PM <=> ENG <=> QA <=> Stakeholder
+            ---
+            ## - Acceptance Criteria is Human Readable
+            ---
+            ## - Acceptance Criteria is Tight
+            - lots of test cases?
+            - new stories
+            - see SPIDR
+            - extra shit is wasteful
+            ---
+            ## - How? SPIDR
+
+            - spike
+            - path
+            - interface
+            - data
+            - rules
+            ---
+                 ## Slide 10: Key Takeaways & Conclusion
+
+            - Summarize the best practices discussed in the presentation
+            - Encourage the audience to reflect on their own test environment processes
+            - Invite questions and discussion
+            ---
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="../../node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="../../node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+    <script>
+      Reveal.initialize({
+        plugins: [RevealMarkdown],
+      });
+    </script>
+  </body>
+</html>
