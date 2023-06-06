@@ -19,74 +19,114 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-markdown section data-transition="fade">
+        <section
+          data-markdown
+          section
+          data-transition="fade"
+          data-background-gradient="linear-gradient(to bottom, #EA8324, #FFFFFF)"
+          234
+          131
+          36
+        >
           <textarea data-template>
             # Best Practices for Test Environments
             ---
-            ## Slide 1: Introduction
-            
+            ## Introduction
             - test environments mitigate risk
-            - but test environments _can_ enforce/require slow & inefficient processes 
-            - Let's throw out everything - start from scratch
+          	- test environments provide a safe place to experiment
+            - too many test environments enforce/reinforce/require slow & inefficient processes
+            - too few (or poorly managed) test environments can artificially block and create confusion and traffic jams
+	          
             ---
-            ## Slide 2: My Early Struggles - standards and why
-            
-            - we should have a test environment that looks like prod
-            - let's call it staging - it will gate everything
-            - staging catches some things, not all - but useful (data concerns, regulatory concerns, 3rd party concerns, costs, infra)
-            - product grows - teams grow --- collisions
-            - coordinations - my stuff needs to go there now, can you wait? i created data that i need!
-            - code can be mitigated a bit by cleaner branching strategies, but data, expectations, varying release schedules can be problematic
-            ---
-            ## - How about another environment? QA!
+            ## Let’s reboot
 
-            - let's use staging as a (pre)prod-copy only. this is a sensitive place
-            - avoids collisions in the sensitive space
-            - let's create a QA environment
-            - perhaps more liberal with data
-            - more liberal with code branches
-            - teams are still growing - more collisions, more data hiccups, more general confusion (feature flags), more investment and capacity required from platform & infra teams
+            - Throw out assumptions and history - start from scratch
+            - What are our Foundational Principles?
+            
             ---
-            ## - How about another environment? Dev!
+            ## System Architecture
 
-            - let's use QA as a (pre)(pre)prod-copy only. let's make QA  more official - this is a sensitive place
-            - avoids collisions in the sensitive space
-            - let's create a place where the QA rules don't apply - lets call it DEV
-            - perhaps more liberal with data, code, integrations, trust, etc
-            - teams are still growing - more collisions, more data hiccups, more general confusion (feature flags)
-            ---
-            ## - How about another environment? Dev2(?)
+            - Backend
+            - Data Warehouse
+            - Clients
+              - Web
+              - iOS
+              - Android
 
-            - rinse repeat
             ---
-            ## Slide 6: Best Practices - Configuration Management
+            ## Foundational Principles
+
+            - all teams (client + backend) should be able to validate changes prior to launching in production
+            - all teams (client + backend) should be able to safely debug production issues
+            - mainline codebases should be kept clean from untested changes (as best as possible)
+            - coordination between teams, branches, and features should be minimized (but will undoubtedly happen)
+            - deployments should be co-owned between ENG/Ops, and must be delivered in under 10 minutes
+            - clients "require" the backend
+            - backend does not "need" a client
             
-            - Use version control systems to manage code and configurations
-            - Ensure consistency across all environments
-            - Automate deployment processes
             ---
-            ## Slide 7: Best Practices - Continuous Integration & Continuous Deployment (CI/CD)
-            
-            - Emphasize the importance of CI/CD in a test environment
-            - Discuss the benefits of implementing CI/CD
-            - Share tools and technologies that can facilitate CI/CD
+            # PROPOSAL
+
             ---
-            ## Slide 8: Best Practices - Monitoring & Reporting
+            ## Containers
             
-            - Monitor test environments for issues and performance
-            - Implement logging and reporting systems to track progress and identify issues
-            - Set up automated alerts for critical incidents
+            - What is a container?
+                - software that packages code and its dependencies so the application runs quickly and reliably across computing environments
+            - what does that mean?
+	              - Theoretically a container can be spun up anywhere at anytime with the same code/dependencies as Production/STG/QA - allowing us to test changes independently in isolation
+            
             ---
-            ## Slide 9: Case Study - My Personal Success Story
+            ## Backend Containers
+            - users: Dev, QA
+            - container for testing all non-calling/non-texting features
+            - *any* branch can be deployed here, by a Dev or QA
+            - in practice, for change verification, it will mostly be feature branches
+            - deploy on-demand
+            - work outstanding
+                - Backend team to complete investigation into supporting containerization
+                - publish documentation to set up & use a local container
             
-            - Share a personal story of how implementing best practices transformed your test environment
-            - Discuss the improvements you saw in terms of efficiency, reduced bugs, and faster deployment
             ---
-            ## Slide 10: Key Takeaways & Conclusion
+            ## QA Environment
+            - users: Dev, QA
+            - for testing calling/texting features
+            - feature branches can go here
+            - *any* branch can go here
+            - deploys must be coordinated / scheduled. 1 hour mininimum, 4 hour maximum
             
-            - Summarize the best practices discussed in the presentation
-            - Encourage the audience to reflect on their own test environment processes
-            - Invite questions and discussion
+            ---
+            ## STG Env
+            - users: Dev, QA, Product, Support
+            - prod debugging
+            - mainline code branch or production version only
+            - final release validation
+            - default for client integration testing
+            - automated e2e tests
+            - Monitor for issues and performance similar to production
+            - Logging and reporting systems to track metrics, feature performance, etc as production
+            - Set up automated alerts for critical incidents similar to production
+            
+            ---
+            ## Automation
+            - users: Dev, QA
+            - backend
+                - execute integration tests against backend containers (parallelized?)
+            - client
+                - stubbed integration with backend for daily/regular runs
+                - full e2e nightly against STG
+
+            ---
+            ## Test Data
+            - Invest in automation of weekly full production data snapshots (masked)
+            - Both STG and QA get refreshes every Sunday night
+            - Containers need a small reference dataset, otherwise managed on-demand by requirements of the feature
+
+            ---
+            ## Key Takeaways & Conclusions
+            ### Parallel tracks
+              1. scheduled testing in QA
+              2. complete backend containerization work
+              3. prod data snapshots
             ---
           </textarea>
         </section>
