@@ -3,9 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Title: Best Practices for Test Environments: A Personal Journey
-    </title>
+    <title>Title: Practices for Test Environments</title>
 
     <link
       rel="stylesheet"
@@ -15,6 +13,50 @@
       rel="stylesheet"
       href="../../node_modules/reveal.js/dist/theme/white.css"
     />
+    <style>
+      /* Hide default bullet point */
+      .bold-blue {
+        font-weight: bold;
+        color: #8ddddf;
+      }
+
+      ul li {
+        list-style-type: none;
+      }
+
+      .bullet-arrow {
+        list-style-type: none;
+        padding-left: 1em;
+      }
+
+      .bullet-arrow > li {
+        position: relative;
+      }
+
+      .bullet-arrow > li > span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .bullet-arrow > li > img {
+        vertical-align: middle;
+        margin-left: 10px;
+      }
+
+      .bullet-arrow li::before {
+        content: "➡";
+        color: #8ddddf;
+        margin-right: 10px;
+        font-size: 0.6em;
+      }
+
+      .bullet-dots li::before {
+        content: "...";
+        color: #8ddddf;
+        margin-right: 10px;
+        font-size: 0.6em;
+      }
+    </style>
   </head>
   <body>
     <div class="reveal">
@@ -23,35 +65,65 @@
           data-markdown
           section
           data-transition="fade"
+          data-background-gradient="linear-gradient(to bottom, #FFFFFF, #FFFFFF)"
+          <!--
           data-background-gradient="linear-gradient(to bottom, #EA8324, #FFFFFF)"
-          234
-          131
-          36
+          --
         >
+          >
           <textarea data-template>
-            # Best Practices for Test Environments
+            # Practices for Test Environments
             ---
-            ## Introduction
-            - test environments mitigate risk
-          	- test environments provide a safe place to experiment
-            - too many test environments enforce/reinforce/require slow & inefficient processes
-            - too few (or poorly managed) test environments can artificially block and create confusion and traffic jams
+            ## Test Environments
+
+            - mitigate <span class="bold-blue">risk</span>
+            - provide a safe place to <span class="bold-blue">experiment</span>
+            
+            <!-- .element: class="bullet-dots" -->
+
+            ---
+            ## Test Environments
+          	
+            - too many reinforce/require <span class="bold-blue">slow</span> & <span class="bold-blue">inefficient processes</span>
+            - too few artificially block and create <span class="bold-blue">confusion</span> and <span class="bold-blue">traffic jams</span>
+            - <span class="bold-blue">poor management</span> injects both (along with other problems)
+
+            <!-- .element: class="bullet-dots" -->
 	          
             ---
             ## Let’s reboot
 
-            - Throw out assumptions and history - start from scratch
-            - What are our Foundational Principles?
+            - throw out old assumptions and history
+            - what are our <span class="bold-blue">foundational principles</span>?
             
+            <!-- .element: class="bullet-arrow" -->
+
             ---
             ## System Architecture
 
-            - Backend
-            - Data Warehouse
-            - Clients
-              - Web
-              - iOS
-              - Android
+            <ul class="bullet-arrow">
+              <li>
+                <span>Backend</span>
+                <img src="../media/api.png" alt="Alt Text" width="25" style="width: 25px;">
+              </li>
+              <li>Data Warehouse</li>
+              <li>
+                <span>Clients</span>
+                <ul class="bullet-arrow">
+                  <li>
+                    <img src="../media/web.png" alt="Alt Text" width="25" style="width: 25px;">
+                  </li>
+                  <li>
+                    <img src="../media/ios.png" alt="Alt Text" width="25" style="width: 25px;">
+                  </li>
+                  <li>
+                    <img src="../media/android.png" alt="Alt Text" width="25" style="width: 25px;">
+                  </li>
+                </ul>
+              </li>
+            </ul>
+                        
+
 
             ---
             ## Foundational Principles
