@@ -14,10 +14,30 @@
       href="../../node_modules/reveal.js/dist/theme/white.css"
     />
     <style>
-      /* Hide default bullet point */
+      .subheading {
+        font-weight: bold;
+        color: #51b254;
+        font-size: large;
+        vertical-align: top;
+      }
+
+      .subnote {
+        font-size: small;
+      }
+
       .bold-blue {
         font-weight: bold;
         color: #8ddddf;
+      }
+
+      .bold-green {
+        font-weight: bold;
+        color: #51b254;
+      }
+
+      .bold-orange {
+        font-weight: bold;
+        color: #dc9133;
       }
 
       ul li {
@@ -99,14 +119,17 @@
             <!-- .element: class="bullet-arrow" -->
 
             ---
-            ## System Architecture
+            ## System Architecture 
+            <span class="subheading">(high-level recap)</span>
 
             <ul class="bullet-arrow">
               <li>
                 <span>Backend</span>
                 <img src="../media/api.png" alt="Alt Text" width="25" style="width: 25px;">
               </li>
-              <li>Data Warehouse</li>
+              <li>
+                <span>Data Warehouse</span>
+              </li>
               <li>
                 <span>Clients</span>
                 <ul class="bullet-arrow">
@@ -123,41 +146,88 @@
               </li>
             </ul>
                         
+            ---
+            ## Foundational Principles
+            ### <span class="subheading">(SDLC)</span>
 
+            - all teams should be able to <span class="bold-green">validate</span> changes prior to launching in production
+            - all teams should be able to safely <span class="bold-green">debug</span> production issues
+
+            <!-- .element: class="bullet-arrow" -->
+            ---
+            ## Foundational Principles
+            ### <span class="subheading">(coordination)</span>
+
+            - <span class="bold-green">coordination</span> between teams, branches, and features should be minimized <span class="bold-orange subnote">(but will undoubtedly happen)</span>
+            
+            <!-- .element: class="bullet-arrow" -->
 
             ---
             ## Foundational Principles
-
-            - all teams (client + backend) should be able to validate changes prior to launching in production
-            - all teams (client + backend) should be able to safely debug production issues
-            - mainline codebases should be kept clean from untested changes (as best as possible)
-            - coordination between teams, branches, and features should be minimized (but will undoubtedly happen)
-            - deployments should be co-owned between ENG/Ops, and must be delivered in under 10 minutes
-            - clients "require" the backend
-            - backend does not "need" a client
+            ### <span class="subheading">(code & deploy)</span>
             
+            - mainline codebases should be kept <span class="bold-green">clean</span> from untested changes <span class="bold-orange subnote">(as best as possible)</span>
+            - deployments should be co-owned between ENG/Ops, and must be delivered in under <span class="bold-green">10 minutes</span>
+            
+            <!-- .element: class="bullet-arrow" -->
+
+            ---
+            ## Foundational Principles
+            ### <span class="subheading">(architecture)</span>
+            
+            - clients <span class="bold-green">require</span> the backend
+            - backend does not <span class="bold-green">need</span> a client
+            - pre-production environments should be at <span class="bold-green">parity</span> with production <span class="bold-orange subnote">(as best as possible)</span>
+            
+            <!-- .element: class="bullet-arrow" -->
+
             ---
             # PROPOSAL
 
             ---
             ## Containers
             
-            - What is a container?
-                - software that packages code and its dependencies so the application runs quickly and reliably across computing environments
-            - what does that mean?
-	              - Theoretically a container can be spun up anywhere at anytime with the same code/dependencies as Production/STG/QA - allowing us to test changes independently in isolation
-            
+            ### <span class="subheading">what is a container?</span>
+            <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
+
+            - _software that packages code and its dependencies so the application runs quickly and reliably <span class="bold-green">across computing environments</span>_
+
+            <!-- .element: class="bullet-arrow" -->
             ---
-            ## Backend Containers
-            - users: Dev, QA
-            - container for testing all non-calling/non-texting features
-            - *any* branch can be deployed here, by a Dev or QA
-            - in practice, for change verification, it will mostly be feature branches
-            - deploy on-demand
-            - work outstanding
-                - Backend team to complete investigation into supporting containerization
-                - publish documentation to set up & use a local container
+            ## Containers            
+            ### <span class="subheading">what does that mean?</span>
+            <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
+
+            - a container can be spun up <span class="bold-blue">anywhere</span> at <span class="bold-blue">anytime</span> with the same code/dependencies as Production/STG/QA 
+            - allowing us to test changes _<span class="bold-green">in isolation</span>_
             
+            <!-- .element: class="bullet-arrow" -->
+            ---
+            ## Backend<img src="../media/api.png" alt="Alt Text" width="25" style="width: 35px;"> Containers
+            <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
+
+            - users: <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;">
+            - container for <span class="bold-blue">non-calling/non-texting</span> user stories
+
+            <!-- .element: class="bullet-arrow" -->
+            ---
+            ## Backend<img src="../media/api.png" alt="Alt Text" width="25" style="width: 35px;"> Containers
+            <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
+
+            - <span class="bold-blue">any branch</span> can be deployed here <span class="bold-orange subnote">(in practice, mostly feature branches)</span>
+            - deploy on-demand
+
+            <!-- .element: class="bullet-arrow" -->
+            ---
+            ## Backend<img src="../media/api.png" alt="Alt Text" width="25" style="width: 35px;"> Containers
+            ### <span class="subheading">work outstanding</span>
+
+            <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
+
+            - publish <span class="bold-blue">documentation</span> to set up & use a local container
+            - team mindset shift - local/isolated verification as a <span class="bold-blue">complement</span> to existing regression practice
+            
+            <!-- .element: class="bullet-arrow" -->
             ---
             ## QA Environment
             - users: Dev, QA
@@ -197,8 +267,8 @@
             ## Key Takeaways & Conclusions
             ### Parallel tracks
               1. scheduled testing in QA
-              2. complete backend containerization work
-              3. prod data snapshots
+              1. complete backend containerization work
+              1. prod data snapshots
             ---
           </textarea>
         </section>
