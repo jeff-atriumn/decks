@@ -106,14 +106,23 @@
           section
           data-transition="fade"
           data-background-gradient="linear-gradient(to bottom, #FFFFFF, #FFFFFF)"
-          <!--
-          data-background-gradient="linear-gradient(to bottom, #EA8324, #FFFFFF)"
-          --
         >
-          >
           <textarea data-template>
             # Practices for Test Environments
             ---
+
+            <!-- .slide: data-markdown="" -->
+
+            # toc
+
+            1. [intro](#intro)
+            1. [foundations](#foundations)
+            1. [proposal](#proposal)
+            1. [takeaways](#takeaways)
+
+            ---
+
+            <!-- .slide: id="intro" -->
             ## Test Environments
 
             - mitigate <span class="bold-blue">risk</span>
@@ -140,18 +149,18 @@
 
             ---
             ## System Architecture 
-            <span class="subheading">(high-level recap)</span>
+            <span class="subheading">(for context)</span>
 
             <ul class="bullet-arrow">
               <li>
-                <span>Backend</span>
+                <span>backend</span>
                 <img src="../media/api.png" alt="Alt Text" width="25" style="width: 25px;">
               </li>
               <li>
-                <span>Data Warehouse</span>
+                <span>data warehouse</span>
               </li>
               <li>
-                <span>Clients</span>
+                <span>clients</span>
                 <ul class="bullet-arrow">
                   <li>
                     <img src="../media/web.png" alt="Alt Text" width="25" style="width: 25px;">
@@ -167,6 +176,7 @@
             </ul>
                         
             ---
+            <!-- .slide: id="foundations" -->
             ## Foundational Principles
             ### <span class="subheading">(SDLC)</span>
 
@@ -202,6 +212,8 @@
             <!-- .element: class="bullet-arrow" -->
 
             ---
+            <!-- .slide: id="proposal" -->
+
             # PROPOSAL
 
             ---
@@ -300,27 +312,52 @@
             
             <!-- .element: class="bullet-arrow" -->
             ---
-            ## Automation
-            - users: Dev, QA
-            - backend
-                - execute integration tests against backend containers (parallelized?)
-            - client
-                - stubbed integration with backend for daily/regular runs
+            ## <img src="../media/automation.png" alt="Alt Text" width="25" style="width: 300px;">
+            ### <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;">
+
+            - <span class="bold-green">backend</span>
+                - execute <span class="bold-blue">integration</span> tests against backend containers (parallelized?)
+            
+            <!-- .element: class="bullet-arrow" -->
+
+            ---
+            ## <img src="../media/automation.png" alt="Alt Text" width="25" style="width: 300px;">
+            ### <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;">
+            - <span class="bold-green">clients</span>
+                - <span class="bold-blue">stubbed</span> integration with backend for daily/regular runs
                 - full e2e nightly against STG
 
+            <!-- .element: class="bullet-arrow" -->
+            
             ---
-            ## Test Data
-            - Invest in automation of weekly full production data snapshots (masked)
-            - Both STG and QA get refreshes every Sunday night
-            - Containers need a small reference dataset, otherwise managed on-demand by requirements of the feature
+            ## <img src="../media/test-data.png" alt="Alt Text" width="25" style="width: 300px;">
+            - <span class="bold-blue">invest</span> in automation of weekly full production data snapshots (masked)
 
+            <!-- .element: class="bullet-arrow" -->
             ---
+
+            ## <img src="../media/test-data.png" alt="Alt Text" width="25" style="width: 300px;">
+            ### <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 150px;">
+
+            - containers need a small <span class="bold-blue">reference</span> dataset
+            - otherwise managed on-demand by requirements of the feature
+
+            <!-- .element: class="bullet-arrow" -->
+            ---
+            ## <img src="../media/test-data.png" alt="Alt Text" width="25" style="width: 300px;">
+            ### <img src="../media/qa-env.png" alt="Alt Text" width="25" style="width: 150px;"><img src="../media/stg-env.png" alt="Alt Text" width="25" style="width: 150px;">
+
+            - refreshes snapshot from PROD <span class="bold-blue">every sunday night</span>
+
+            <!-- .element: class="bullet-arrow" -->
+            ---
+            <!-- .slide: id="takeaways" -->
             ## Key Takeaways & Conclusions
-            ### Parallel tracks
-              1. scheduled testing in QA
-              1. complete backend containerization work
-              1. prod data snapshots
-            ---
+            ### <span class="subheading">(parallel tracks)</span>
+              1. <span class="bold-blue">coordinated testing in QA</span>
+              1. <span class="bold-green">complete backend containerization work</span>
+              1. <span class="bold-orange">prod data snapshots</span>
+
           </textarea>
         </section>
       </div>
