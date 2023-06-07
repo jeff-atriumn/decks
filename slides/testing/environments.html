@@ -14,6 +14,26 @@
       href="../../node_modules/reveal.js/dist/theme/white.css"
     />
     <style>
+      .reveal,
+      .slides {
+        position: relative;
+      }
+
+      .reveal::before,
+      .slides::before {
+        content: "";
+        background-image: url(../media/pinger.png);
+        background-repeat: no-repeat;
+        background-position: bottom right; /* Move the image to the bottom right corner */
+        background-size: 50px;
+        opacity: 0.5; /* Adjust the opacity as desired */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+      }
       .subheading {
         font-weight: bold;
         color: #51b254;
@@ -204,15 +224,16 @@
             <!-- .element: class="bullet-arrow" -->
             ---
             ## Backend<img src="../media/api.png" alt="Alt Text" width="25" style="width: 35px;"> Containers
-            <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
-
-            - users: <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;">
+            ### <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
+            ### <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;">
+            
             - container for <span class="bold-blue">non-calling/non-texting</span> user stories
 
             <!-- .element: class="bullet-arrow" -->
             ---
             ## Backend<img src="../media/api.png" alt="Alt Text" width="25" style="width: 35px;"> Containers
-            <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
+            ### <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
+            ### <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;">
 
             - <span class="bold-blue">any branch</span> can be deployed here <span class="bold-orange subnote">(in practice, mostly feature branches)</span>
             - deploy on-demand
@@ -220,34 +241,64 @@
             <!-- .element: class="bullet-arrow" -->
             ---
             ## Backend<img src="../media/api.png" alt="Alt Text" width="25" style="width: 35px;"> Containers
-            ### <span class="subheading">work outstanding</span>
-
-            <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
-
+            ### <img src="../media/containers.jpeg" alt="Alt Text" width="25" style="width: 175px;">
+            
+            <span class="subheading">work outstanding</span>
             - publish <span class="bold-blue">documentation</span> to set up & use a local container
             - team mindset shift - local/isolated verification as a <span class="bold-blue">complement</span> to existing regression practice
             
             <!-- .element: class="bullet-arrow" -->
             ---
-            ## QA Environment
-            - users: Dev, QA
-            - for testing calling/texting features
-            - feature branches can go here
-            - *any* branch can go here
-            - deploys must be coordinated / scheduled. 1 hour mininimum, 4 hour maximum
-            
+
+            # QA Environment
+            ## <img src="../media/qa-env.png" alt="Alt Text" width="25" style="width: 450px;">
+
             ---
-            ## STG Env
-            - users: Dev, QA, Product, Support
-            - prod debugging
+            ## <img src="../media/qa-env.png" alt="Alt Text" width="25" style="width: 300px;">
+            ### <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;">
+            - environment for verification of <span class="bold-blue">non-calling/non-texting</span> user stories
+
+            <!-- .element: class="bullet-arrow" -->
+            ---
+            ## <img src="../media/qa-env.png" alt="Alt Text" width="25" style="width: 300px;">
+            ### <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;">
+
+            - <span class="bold-blue">any branch</span> can be deployed here <span class="bold-orange subnote">(in practice, mostly feature branches)</span>
+            - deploys must be <span class="bold-blue">coordinated</span>
+              - 1 hour mininimum, 4 hour maximum
+
+            <!-- .element: class="bullet-arrow" -->
+
+            ---
+            # STG Environment
+            ## <img src="../media/stg-env.png" alt="Alt Text" width="25" style="width: 450px;">
+
+            ---
+            ## <img src="../media/stg-env.png" alt="Alt Text" width="25" style="width: 300px;">
+            ### <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/red-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/orange-stick.png" alt="Alt Text" width="25" style="width: 75px;">
+
+            - prod <span class="bold-blue">debugging</span>
             - mainline code branch or production version only
-            - final release validation
-            - default for client integration testing
-            - automated e2e tests
-            - Monitor for issues and performance similar to production
-            - Logging and reporting systems to track metrics, feature performance, etc as production
-            - Set up automated alerts for critical incidents similar to production
+            - final release <span class="bold-blue">validation</span>
+
+            <!-- .element: class="bullet-arrow" -->
+            ---
+            ## <img src="../media/stg-env.png" alt="Alt Text" width="25" style="width: 300px;">
+            ### <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/red-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/orange-stick.png" alt="Alt Text" width="25" style="width: 75px;">
+
+            - default for client <span class="bold-blue">integration</span> testing
+            - <span class="bold-blue">automated</span> e2e tests
+
+            <!-- .element: class="bullet-arrow" -->
+            ---
+            ## <img src="../media/stg-env.png" alt="Alt Text" width="25" style="width: 300px;">
+            ### <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/red-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/orange-stick.png" alt="Alt Text" width="25" style="width: 75px;">
+
+            - <span class="bold-blue">monitor</span> similar to production
+            - <span class="bold-blue">logging systems</span> for metrics, feature performance as production
+            - automated alerts for critical incidents
             
+            <!-- .element: class="bullet-arrow" -->
             ---
             ## Automation
             - users: Dev, QA
