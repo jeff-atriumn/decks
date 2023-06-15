@@ -45,9 +45,27 @@
         font-size: small;
       }
 
+      .x-small-text {
+        font-size: x-small;
+      }
+
+      .small-text {
+        font-size: small;
+      }
+
       .bold-blue {
         font-weight: bold;
         color: #8ddddf;
+      }
+
+      .bold-red {
+        font-weight: bold;
+        color: #ff3034;
+      }
+
+      .bold-purple {
+        font-weight: bold;
+        color: #9500f9;
       }
 
       .bold-green {
@@ -62,6 +80,15 @@
 
       ul li {
         list-style-type: none;
+      }
+
+      .env-table {
+        font-size: 18px;
+        border: 1px solid black;
+      }
+
+      .orange-cell {
+        background-color: rgba(220, 145, 51, 0.75);
       }
 
       .bullet-arrow {
@@ -276,6 +303,7 @@
             ### <img src="../media/blue-stick.png" alt="Alt Text" width="25" style="width: 75px;"><img src="../media/green-stick.png" alt="Alt Text" width="25" style="width: 75px;">
 
             - <span class="bold-blue">any branch</span> can be deployed here <span class="bold-orange subnote">(in practice, mostly feature branches)</span>
+            - should be mostly feature branches - dev or other integrated branches may cause issues
             - deploys must be <span class="bold-blue">coordinated</span>
               - 1 hour mininimum, 4 hour maximum
 
@@ -350,6 +378,54 @@
             - refreshes snapshot from PROD <span class="bold-blue">every sunday night</span>
 
             <!-- .element: class="bullet-arrow" -->
+
+            ---
+            # Summary
+
+            <table class="env-table">
+              <tr>
+                  <th>ENV</th>
+                  <th>Code Version</th>
+                  <th>Config</th>
+                  <th>Data</th>
+                  <th>3rd Parties</th>
+                  <th>Infra/Servers</th>
+                  <th>Monitoring & Logging</th>
+              </tr>
+              <tr>
+                  <td><strong>Staging (STG)</strong></td>
+                  <td><span class="bold-orange">Prod or Prod + 1</span></td>
+                  <td><span class="bold-orange">Prod Mirror<span class="bold-red">(*)</span></span></td>
+                  <td><span class="bold-orange small-text">Masked Prod Snapshot</span></td>
+                  <td><span class="bold-orange">Prod versions<span class="bold-red">(*)</span></span></td>
+                  <td><span class="bold-orange small-text">Same infra, smaller scale</span></td>
+                  <td><span class="bold-orange">Prod Mirror<span class="bold-red">(*)</span></span></td>
+              </tr>
+              <tr>
+                  <td><strong>QA</strong></td>
+                  <td><span class="bold-green small-text">as required by the feature under verification</span></td>
+                  <td><span class="bold-orange">Prod Mirror<span class="bold-purple">(**)</span></span></td>
+                  <td><span class="bold-green small-text">Standard Golden Dataset</span></td>
+                  <td><span class="bold-orange">Prod versions<span class="bold-purple">(**)</span></span></td>
+                  <td><span class="bold-blue small-text">Same infra, smaller scale</span></td>
+                  <td><span class="bold-orange">Prod Mirror<span class="bold-purple">(**)</span></span></td>
+              </tr>
+              <tr>
+                  <td><strong>Backend Containers</strong></td>
+                  <td><span class="bold-green small-text">as required by the feature under verification</span></td>
+                  <td><span class="bold-orange">Prod Mirror<span class="bold-purple">(**)</span></span></td>
+                  <td><span class="bold-green small-text">Standard Golden Dataset</span></td>
+                  <td><span class="bold-orange">Prod versions<span class="bold-purple">(**)</span></span></td>
+                  <td><span class="small-text"><strong>Same infra, much smaller scale, <span class="bold-red">no calling/texting</span></strong></span></td>
+                  <td><span class="bold-green">Local</span></td>
+              </tr>
+            </table>
+
+            <!-- .element: class="env-table" -->
+
+            <span class="bold-red small-text">(*) unless validating a change</span>
+            <span class="bold-purple small-text">(**) unless verifying a change</span>
+            
             ---
             <!-- .slide: id="takeaways" -->
             ## Key Takeaways & Conclusions
@@ -358,6 +434,14 @@
               1. <span class="bold-green">complete backend containerization work</span>
               1. <span class="bold-orange">prod data snapshots</span>
 
+            ---
+            # Appendix
+
+            ---
+
+            ## Verification vs Validation
+            ### <img src="../media/vv.jpeg" alt="Alt Text" width="25" style="width: 300px;">
+  
           </textarea>
         </section>
       </div>
